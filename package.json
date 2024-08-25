@@ -1,0 +1,15 @@
+{
+  "name": "coderhouse-nodejs",
+  "version": "1.0.0",
+  "description": "Coderhouse Node.js Course",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "author": "Wilbelison Junior",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}

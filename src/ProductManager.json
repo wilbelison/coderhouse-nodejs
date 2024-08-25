@@ -1,0 +1,182 @@
+[
+  {
+    "id": 0,
+    "title": "Seven Days Underwear - Cueca Seven Days",
+    "description": "A revolução no mundo das cuecas! Use por até 7 dias sem precisar trocar, graças à nossa tecnologia anti-odor suprema.",
+    "price": 29.99,
+    "thumbnail": "./products/0/thumbnail.jpg",
+    "code": "SEVEN_DAYS",
+    "stock": 50
+  },
+  {
+    "id": 1,
+    "title": "H2O Capsule - Cápsula Desidratada de Água",
+    "description": "Finalmente, a solução para matar a sede! Tome com dois copos de água gelada e sinta-se hidratado.",
+    "price": 4.99,
+    "thumbnail": "./products/1/thumbnail.jpg",
+    "code": "H2O_CAPSULE",
+    "stock": 100
+  },
+  {
+    "id": 2,
+    "title": "Air Sandwich - Sanduíche de Ar",
+    "description": "Ideal para quem está de dieta! Pão fresquinho recheado com nada. Sinta o gosto da leveza.",
+    "price": 9.99,
+    "thumbnail": "./products/2/thumbnail.jpg",
+    "code": "AIR_SANDWICH",
+    "stock": 200
+  },
+  {
+    "id": 3,
+    "title": "Telemarketing Repellent - Repelente de Vendedor de Telemarketing",
+    "description": "Basta borrifar no ar e adeus ligações incômodas! Efetivo por até 12 horas.",
+    "price": 19.99,
+    "thumbnail": "./products/3/thumbnail.jpg",
+    "code": "REP_TELEMARK",
+    "stock": 75
+  },
+  {
+    "id": 4,
+    "title": "Bad Jokes Book - Livro de Piadas Infames",
+    "description": "Cuidado! Risadas constrangedoras garantidas. Ideal para quem adora um humor duvidoso.",
+    "price": 14.99,
+    "thumbnail": "./products/4/thumbnail.jpg",
+    "code": "BAD_JOKES",
+    "stock": 120
+  },
+  {
+    "id": 5,
+    "title": "Lazy Instant Coffee - Café Preguiçoso Instantâneo",
+    "description": "Não precisa mexer! A fórmula especial se mistura sozinha na água quente. Preguiça em cada gole.",
+    "price": 7.99,
+    "thumbnail": "./products/5/thumbnail.jpg",
+    "code": "LAZY_COFFEE",
+    "stock": 95
+  },
+  {
+    "id": 6,
+    "title": "Hole Umbrella - Guarda-Chuva com Furo",
+    "description": "Para aqueles que gostam de viver perigosamente na chuva. É um guarda-chuva, mas com emoção.",
+    "price": 5.99,
+    "thumbnail": "./products/6/thumbnail.jpg",
+    "code": "HOLE_UMBRELLA",
+    "stock": 60
+  },
+  {
+    "id": 7,
+    "title": "Self-Esteem Mirror - Espelho que Devolve a Autoestima",
+    "description": "Olhe para ele e receba um elogio automaticamente. Perfeito para dias difíceis.",
+    "price": 24.99,
+    "thumbnail": "./products/7/thumbnail.jpg",
+    "code": "SELF_MIRROR",
+    "stock": 30
+  },
+  {
+    "id": 8,
+    "title": "Mother-In-Law Headphones - Fones de Ouvido Cancelador de Sogras",
+    "description": "Finalmente a paz! Cancelamento de ruído especialmente calibrado para frequências de voz de sogras.",
+    "price": 89.99,
+    "thumbnail": "./products/8/thumbnail.jpg",
+    "code": "NO_SOGRA",
+    "stock": 40
+  },
+  {
+    "id": 9,
+    "title": "Cooking for Dummies - Livro de Receitas Para Quem Não Sabe Cozinhar",
+    "description": "Receitas tão simples que até um especialista em esquentar água consegue fazer.",
+    "price": 19.99,
+    "thumbnail": "./products/9/thumbnail.jpg",
+    "code": "DUMMY_COOK",
+    "stock": 80
+  },
+  {
+    "id": 10,
+    "title": "Invisible Thoughts Cloak - Capa Invisível (mas só em Pensamentos)",
+    "description": "Vista e sinta-se invisível... para si mesmo! Ideal para aqueles momentos de introspecção.",
+    "price": 49.99,
+    "thumbnail": "./products/10/thumbnail.jpg",
+    "code": "INVISIBLE_THOUGHTS",
+    "stock": 25
+  },
+  {
+    "id": 11,
+    "title": "Smelly Feet Candle - Velas Perfumadas de Chulé",
+    "description": "Para aqueles que adoram um aroma excêntrico. Perfeito para afastar visitas indesejadas.",
+    "price": 9.99,
+    "thumbnail": "./products/11/thumbnail.jpg",
+    "code": "SMELL_CANDLE",
+    "stock": 45
+  },
+  {
+    "id": 12,
+    "title": "Useless Anti-Aging Cream - Creme Anti-Idade que não Funciona",
+    "description": "Compre pela embalagem, porque o creme... bom, o creme é só um creme.",
+    "price": 59.99,
+    "thumbnail": "./products/12/thumbnail.jpg",
+    "code": "USELESS_AGE",
+    "stock": 15
+  },
+  {
+    "id": 13,
+    "title": "Bad Chair - Cadeira Ergonômica que Só Piora",
+    "description": "Para quem quer uma desculpa para levantar mais vezes do que sentar. Testada e aprovada pelos inimigos.",
+    "price": 199.99,
+    "thumbnail": "./products/13/thumbnail.jpg",
+    "code": "BAD_CHAIR",
+    "stock": 12
+  },
+  {
+    "id": 14,
+    "title": "Shrinking Soap - Sabonete que Encolhe na Água",
+    "description": "Lave as mãos e veja o sabonete desaparecer magicamente. Diversão para toda a família.",
+    "price": 3.99,
+    "thumbnail": "./products/14/thumbnail.jpg",
+    "code": "SHRINK_SOAP",
+    "stock": 100
+  },
+  {
+    "id": 15,
+    "title": "Afternoon Watch - Relógio que Só Funciona Depois do Meio-Dia",
+    "description": "Perfeito para quem não gosta de acordar cedo. Marque seus compromissos à tarde com estilo.",
+    "price": 39.99,
+    "thumbnail": "./products/15/thumbnail.jpg",
+    "code": "PM_ONLY",
+    "stock": 20
+  },
+  {
+    "id": 16,
+    "title": "Bacon Toothpaste - Pasta de Dente com Sabor de Bacon",
+    "description": "Para começar o dia com o pé direito e um gosto de café da manhã na boca!",
+    "price": 7.99,
+    "thumbnail": "./products/16/thumbnail.jpg",
+    "code": "BACON_TOOTH",
+    "stock": 65
+  },
+  {
+    "id": 17,
+    "title": "Worker Mug - Caneca Mágica do Trabalhador",
+    "description": "Parece cheia, mas na verdade está vazia... Igual a sua motivação na segunda-feira.",
+    "price": 14.99,
+    "thumbnail": "./products/17/thumbnail.jpg",
+    "code": "MAGIC_MUG",
+    "stock": 35
+  },
+  {
+    "id": 18,
+    "title": "Kids Remote - Controle Remoto de Criança",
+    "description": "Aperte o botão 'Mute' e ganhe alguns momentos de paz... Na sua imaginação, claro.",
+    "price": 24.99,
+    "thumbnail": "./products/18/thumbnail.jpg",
+    "code": "KID_REMOTE",
+    "stock": 40
+  },
+  {
+    "id": 19,
+    "title": "Faulty Alarm Clock - Despertador que Não Desperta",
+    "description": "Perfeito para quem quer um bom motivo para continuar dormindo. Ele toca... quando quiser.",
+    "price": 29.99,
+    "thumbnail": "./products/19/thumbnail.jpg",
+    "code": "BAD_ALARM",
+    "stock": 28
+  }
+]
