@@ -1,112 +1,76 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 
 class ProductManager {
   constructor(jsonPath) {
     this.jsonPath = jsonPath;
-    this.products = this.loadProducts();
-    this.id = this.products.length
-      ? this.products[this.products.length - 1].id + 1
-      : 1;
   }
 
-  loadProducts() {
+  async loadJSON() {
     try {
-      return JSON.parse(fs.readFileSync(this.jsonPath, "utf-8"));
-    } catch {
-      return [];
+      const data = await fs.readFile(this.jsonPath, "utf-8");
+      return JSON.parse(data);
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        await this.saveJSON([]);
+        return [];
+      }
+      throw error;
     }
   }
 
-  saveProducts() {
-    fs.writeFileSync(this.jsonPath, JSON.stringify(this.products, null, 2));
+  async saveJSON(products) {
+    await fs.writeFile(this.jsonPath, JSON.stringify(products, null, 2));
   }
 
-  addProduct(product) {
-    const { title, description, price, thumbnail, code, stock } = product;
-    if (!title || !description || !price || !thumbnail || !code || !stock) {
-      console.error(
-        "Oops! Você esqueceu algum ingrediente essencial do produto."
-      );
+  async addProduct(product) {
+    const products = await this.loadJSON();
+    const id = products.length ? products[products.length - 1].id + 1 : 1;
+    if (!Object.values(product).every(value => value)) {
+      console.error("Você esqueceu alguma informação do produto.");
       return;
     }
-    if (this.products.some((p) => p.code === code)) {
-      console.error(
-        "Erro 404: Código de produto duplicado! Tente outra combinação secreta."
-      );
+    if (products.some(p => p.code === product.code)) {
+      console.error("Código de produto duplicado!");
       return;
     }
-    this.products.push({
-      id: this.id++,
-      title,
-      description,
-      price,
-      thumbnail,
-      code,
-      stock,
-    });
-    this.saveProducts();
-    console.log(
-      `🎉 Uhul! Produto "${title}" adicionado com sucesso! Que tal adicionar outro?`
-    );
+    products.push({ id, ...product });
+    await this.saveJSON(products);
+    console.log(`Produto "${product.title}" adicionado!`);
   }
 
-  getProducts() {
-    return this.products;
+  async getProducts(limit = null) {
+    const products = await this.loadJSON();
+    return limit ? products.slice(0, limit) : products;
   }
 
-  getProductById(id) {
-    const product = this.products.find((product) => product.id === id);
-    if (!product)
-      console.error(
-        "A busca pelo produto falhou! Ele deve estar escondido em algum lugar."
-      );
-    return product;
+  async getProductById(id) {
+    const products = await this.getProducts();
+    return products.find(product => product.id === id) || null;
   }
 
-  updateProduct(id, updatedFields) {
-    const product = this.getProductById(id);
+  async updateProduct(id, updatedFields) {
+    const products = await this.getProducts();
+    const product = products.find(p => p.id === id);
     if (product) {
       Object.assign(product, updatedFields);
-      this.saveProducts();
-      console.log(
-        `✨ O produto "${product.title}" passou por uma reforma e está atualizado!`
-      );
+      await this.saveJSON(products);
+      console.log(`Produto "${product.title}" atualizado!`);
+    } else {
+      console.error("Produto não encontrado.");
     }
   }
 
-  deleteProduct(id) {
-    const index = this.products.findIndex((product) => product.id === id);
-    if (index !== -1) {
-      this.products.splice(index, 1);
-      this.saveProducts();
-      console.log(
-        "🚮 Produto deletado com sucesso. Adeus, amigo... Foi bom enquanto durou!"
-      );
+  async deleteProduct(id) {
+    let products = await this.getProducts();
+    const initialLength = products.length;
+    products = products.filter(product => product.id !== id);
+    if (products.length < initialLength) {
+      await this.saveJSON(products);
+      console.log("🚮 Produto removido!");
     } else {
-      console.error(
-        "Erro 404: Produto não encontrado. Será que ele foi abduzido?"
-      );
+      console.error("Produto não encontrado.");
     }
   }
 }
 
 module.exports = ProductManager;
-
-// const catalog = new ProductManager("./ProductManager.json");
-
-// catalog.addProduct({
-//   title: "Refrigerante Alienígena",
-//   description:
-//     "Um refresco importado diretamente da Galáxia de Andrômeda. Sabor extraterrestre com bolhas que flutuam!",
-//   price: 19.99,
-//   thumbnail: "./products/alien_soda.jpg",
-//   code: "ALIEN_SODA",
-//   stock: 33,
-// });
-
-// console.table(catalog.getProducts());
-
-// catalog.updateProduct(3, { price: 16.99 });
-// console.table(catalog.getProductById(4));
-
-// catalog.deleteProduct(3);

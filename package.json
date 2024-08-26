@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon"
   },
-  "author": "Wilbelison Junior",
+  "author": "Wil",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
