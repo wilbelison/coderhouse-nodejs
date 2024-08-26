@@ -43,9 +43,9 @@ class ProductManager {
     return limit ? products.slice(0, limit) : products;
   }
 
-  async getProductById(id) {
+  async getProductById(pid) {
     const products = await this.getProducts();
-    return products.find(product => product.id === id) || null;
+    return products.find(product => product.id === pid) || null;
   }
 
   async updateProduct(id, updatedFields) {
