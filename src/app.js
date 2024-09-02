@@ -1,45 +1,17 @@
-const express = require("express");
+import express from "express";
+import usersRouter from "./routes/users.js";
+import petsRouter from "./routes/pets.js";
 
 const app = express();
-const port = 3000;
-
-const server = app.listen(port, () => {
-  console.log(`App listening on port ${port}: http://localhost:${port}`);
-});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-let users = [];
-let uid = 0;
+app.use("/api/users", usersRouter);
+app.use("/api/pets", petsRouter);
 
-// POST http://localhost:3000/users
-/* BODY
-  {
-    "firstName": "Wilbelison",
-    "lastName": "Junior"
-  }
-*/
+const PORT = 8080;
 
-app.post("/users", (req, res) => {
-  let user = req.body;
-
-  if (!user.firstName || !user.lastName) {
-    return res.status(400).send({
-      stats: "error",
-      message: "The firstName and lastName are required!",
-    });
-  }
-
-  user.id = uid;
-  users.push(user);
-  uid++;
-
-  res.status(200).send({ status: "success", message: "User created!" });
-});
-
-// GET http://localhost:3000/users
-
-app.get("/users", (req, res) => {
-  res.json(users);
+app.listen(PORT, () => {
+  console.log(`Server is running on: http://localhost:${PORT}`);
 });
