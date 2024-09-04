@@ -17,8 +17,10 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./src/views");
 
+app.use(express.static("./src/public"));
+
 app.get("/", (req, res) => {
-  res.render("home", { title: "Aula 9", name: "Wilbelison" });
+  res.render("home", { title: "Aula 9", name: "galerinha" });
 });
 
 const server = app.listen(port, () => {
