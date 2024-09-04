@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: #efefef;
+  color: #333;
+}
+
+body {
+  margin: 40px 80px;
+}
