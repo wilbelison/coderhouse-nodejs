@@ -1,17 +1,26 @@
 import express from "express";
-import usersRouter from "./routes/users.js";
-import petsRouter from "./routes/pets.js";
+import { engine } from "express-handlebars";
 
 const app = express();
+const port = 8080;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// import usersRouter from "./routes/users.js";
+// import petsRouter from "./routes/pets.js";
 
-app.use("/api/users", usersRouter);
-app.use("/api/pets", petsRouter);
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
-const PORT = 8080;
+// app.use("/api/users", usersRouter);
+// app.use("/api/pets", petsRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on: http://localhost:${PORT}`);
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./src/views");
+
+app.get("/", (req, res) => {
+  res.render("home", { title: "Aula 9", name: "Wilbelison" });
+});
+
+const server = app.listen(port, () => {
+  console.log(`App listening on port ${port}: http://localhost:${port}`);
 });
