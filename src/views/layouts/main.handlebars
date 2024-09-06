@@ -7,10 +7,19 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
     <link rel="manifest" href="./site.webmanifest" />
-    <link rel="stylesheet" href="./assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    {{#if styles}}
+        {{#each styles}}
+            <link rel="stylesheet" href="{{.}}">
+        {{/each}}
+    {{/if}}
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-    <script src="/assets/scripts/socket.js" defer></script>
-    <title>{{ title }}</title>
+    {{#if scripts}}
+        {{#each scripts}}
+            <script src="{{ . }}" defer></script>
+        {{/each}}
+    {{/if}}
+    <title>{{title}}</title>
 </head>
 <body>
     {{{ body }}}

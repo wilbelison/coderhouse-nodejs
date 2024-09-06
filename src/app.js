@@ -1,7 +1,5 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import { createServer } from "http";
-import { Server } from "socket.io";
 
 const app = express();
 const port = 8080;
@@ -22,20 +20,37 @@ app.set("views", "./src/views");
 app.use(express.static("./src/public"));
 
 app.get("/", (req, res) => {
-  res.render("home", { title: "Aula 9", name: "galerinha" });
+  res.render("home", {
+    title: "Home",
+  });
+});
+
+app.get("/chat", (req, res) => {
+  res.render("chat", {
+    title: "Chat",
+    styles: ["/assets/styles/chat.css"],
+    scripts: ["/assets/scripts/chat.js"],
+  });
 });
 
 const httpServer = app.listen(port, () => {
   console.log(`App listening on port ${port}: http://localhost:${port}`);
 });
 
-const io = new Server(httpServer, {
-  /* options */
-});
+import { Server } from "socket.io";
+
+const io = new Server(httpServer);
+
+const history = [];
 
 io.on("connection", (socket) => {
-  console.log(`${socket.id}: connected`);
+  const color = Math.floor(Math.random() * 360);
+  console.log(`${socket.id}: connected! color: ${color}`);
   socket.on("message", (message) => {
-    io.emit("new", { id: socket.id, message });
+    const date = new Date().toLocaleString();
+    console.log(`Date: ${date} | Socket ID: ${socket.id} | Message: ${message}`)
+    history.push({ color, id: socket.id, message, date });
+    io.emit("history", history);
   });
+  io.emit("history", history);
 });
