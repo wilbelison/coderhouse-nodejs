@@ -1,5 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
+import { createServer } from "http";
+import { Server } from "socket.io";
 
 const app = express();
 const port = 8080;
@@ -23,6 +25,17 @@ app.get("/", (req, res) => {
   res.render("home", { title: "Aula 9", name: "galerinha" });
 });
 
-const server = app.listen(port, () => {
+const httpServer = app.listen(port, () => {
   console.log(`App listening on port ${port}: http://localhost:${port}`);
+});
+
+const io = new Server(httpServer, {
+  /* options */
+});
+
+io.on("connection", (socket) => {
+  console.log(`${socket.id}: connected`);
+  socket.on("message", (message) => {
+    io.emit("new", { id: socket.id, message });
+  });
 });
