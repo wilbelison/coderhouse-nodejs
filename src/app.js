@@ -20,9 +20,37 @@ app.set("views", "./src/views");
 app.use(express.static("./src/public"));
 
 app.get("/", (req, res) => {
-  res.render("home", { title: "Aula 9", name: "galerinha" });
+  res.render("home", {
+    title: "Home",
+  });
 });
 
-const server = app.listen(port, () => {
+app.get("/chat", (req, res) => {
+  res.render("chat", {
+    title: "Chat",
+    styles: ["/assets/styles/chat.css"],
+    scripts: ["/assets/scripts/chat.js"],
+  });
+});
+
+const httpServer = app.listen(port, () => {
   console.log(`App listening on port ${port}: http://localhost:${port}`);
+});
+
+import { Server } from "socket.io";
+
+const io = new Server(httpServer);
+
+const history = [];
+
+io.on("connection", (socket) => {
+  const color = Math.floor(Math.random() * 360);
+  console.log(`${socket.id}: connected! color: ${color}`);
+  socket.on("message", (message) => {
+    const date = new Date().toLocaleString();
+    console.log(`Date: ${date} | Socket ID: ${socket.id} | Message: ${message}`)
+    history.push({ color, id: socket.id, message, date });
+    io.emit("history", history);
+  });
+  io.emit("history", history);
 });
