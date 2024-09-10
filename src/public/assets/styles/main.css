@@ -5,8 +5,7 @@
 }
 
 html {
-  color: #333;
-  font-family: sans-serif;
+  font-family: "Roboto", system-ui;
   font-size: 16px;
   color: #333;
   background-color: #fff;
