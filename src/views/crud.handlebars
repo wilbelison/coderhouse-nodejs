@@ -1,0 +1,67 @@
+<h1>CRUD (Create, Read, Update, Delete)</h1>
+
+<main id="crud">
+
+  <form class="create">
+    <div class="line">
+      <label for="name">Nome:</label>
+      <input type="text" name="name" required />
+    </div>
+    <div class="line">
+      <label for="last_name">Sobrenome:</label>
+      <input type="text" name="last_name" required />
+    </div>
+    <div class="line">
+      <label for="age">Idade:</label>
+      <input type="number" name="age" required />
+    </div>
+    <div class="line">
+      <label for="email">Email:</label>
+      <input type="email" name="email" required />
+    </div>
+    <div class="line">
+      <input type="submit" name="add" value="Adicionar" />
+    </div>
+  </form>
+
+  <table class="data">
+    <thead>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Idade</th>
+      <th>E-mail</th>
+      <th>Ações</th>
+    </thead>
+    <tr>
+      <td><input
+          type="text"
+          name="name"
+          required
+          disabled
+          value="Wilbelison"
+        /></td>
+      <td><input
+          type="text"
+          name="last_name"
+          required
+          disabled
+          value="Santos Costa Junior"
+        /></td>
+      <td><input type="number" name="age" required disabled value="39" /></td>
+      <td><input
+          type="email"
+          name="email"
+          required
+          disabled
+          value="meustudio@gmail.com"
+        /></td>
+      <td>
+        <button class="edit">Editar</button>
+        <button class="delete">Excluir</button>
+        <button class="save">Salvar</button>
+        <button class="cancel">Cancelar</button>
+      </td>
+    </tr>
+  </table>
+
+</main>
