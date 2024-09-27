@@ -4,19 +4,19 @@
 
   <form class="create">
     <div class="line">
-      <label for="name">Nome:</label>
+      <label for="name">Nome</label>
       <input type="text" name="name" required />
     </div>
     <div class="line">
-      <label for="last_name">Sobrenome:</label>
+      <label for="last_name">Sobrenome</label>
       <input type="text" name="last_name" required />
     </div>
     <div class="line">
-      <label for="age">Idade:</label>
+      <label for="age">Idade</label>
       <input type="number" name="age" required />
     </div>
     <div class="line">
-      <label for="email">Email:</label>
+      <label for="email">E-mail</label>
       <input type="email" name="email" required />
     </div>
     <div class="line">
@@ -25,43 +25,108 @@
   </form>
 
   <table class="data">
+
     <thead>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>Idade</th>
-      <th>E-mail</th>
-      <th>Ações</th>
+      <th width="20%">Nome</th>
+      <th width="25%">Sobrenome</th>
+      <th width="10%">Idade</th>
+      <th width="25%">E-mail</th>
+      <th width="20%">Ações</th>
     </thead>
-    <tr>
-      <td><input
-          type="text"
-          name="name"
-          required
-          disabled
-          value="Wilbelison"
-        /></td>
-      <td><input
-          type="text"
-          name="last_name"
-          required
-          disabled
-          value="Santos Costa Junior"
-        /></td>
-      <td><input type="number" name="age" required disabled value="39" /></td>
-      <td><input
-          type="email"
-          name="email"
-          required
-          disabled
-          value="meustudio@gmail.com"
-        /></td>
-      <td>
-        <button class="edit">Editar</button>
-        <button class="delete">Excluir</button>
-        <button class="save">Salvar</button>
-        <button class="cancel">Cancelar</button>
-      </td>
-    </tr>
+
+    <tbody>
+
+      <tr>
+        <td><input
+            type="text"
+            name="name"
+            required
+            disabled
+            value="Wilbelison"
+          /></td>
+        <td><input
+            type="text"
+            name="last_name"
+            required
+            disabled
+            value="Santos Costa Junior"
+          /></td>
+        <td><input type="number" name="age" required disabled value="39" /></td>
+        <td><input
+            type="email"
+            name="email"
+            required
+            disabled
+            value="meustudio@gmail.com"
+          /></td>
+        <td>
+          <button class="edit">Editar</button>
+          <button class="delete">Excluir</button>
+          <button class="save">Salvar</button>
+          <button class="cancel">Cancelar</button>
+        </td>
+      </tr>
+
+      <tr class="editing">
+        <td><input
+            type="text"
+            name="name"
+            required
+            value="Wilbelison"
+          /></td>
+        <td><input
+            type="text"
+            name="last_name"
+            required
+            value="Santos Costa Junior"
+          /></td>
+        <td><input type="number" name="age" required value="39" /></td>
+        <td><input
+            type="email"
+            name="email"
+            required
+            value="meustudio@gmail.com"
+          /></td>
+        <td>
+          <button class="edit">Editar</button>
+          <button class="delete">Excluir</button>
+          <button class="save">Salvar</button>
+          <button class="cancel">Cancelar</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td><input
+            type="text"
+            name="name"
+            required
+            disabled
+            value="Wilbelison"
+          /></td>
+        <td><input
+            type="text"
+            name="last_name"
+            required
+            disabled
+            value="Santos Costa Junior"
+          /></td>
+        <td><input type="number" name="age" required disabled value="39" /></td>
+        <td><input
+            type="email"
+            name="email"
+            required
+            disabled
+            value="meustudio@gmail.com"
+          /></td>
+        <td>
+          <button class="edit">Editar</button>
+          <button class="delete">Excluir</button>
+          <button class="save">Salvar</button>
+          <button class="cancel">Cancelar</button>
+        </td>
+      </tr>
+
+    </tbody>
   </table>
 
 </main>
