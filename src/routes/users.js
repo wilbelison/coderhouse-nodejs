@@ -15,7 +15,8 @@ router.get("/:id?", (req, res) => {
     res.status(200).json(users);
   } else {
     users.forEach((user) => {
-      if (user.id === parseInt(req.params.id)) return res.status(200).json(user);
+      if (user.id === parseInt(req.params.id))
+        return res.status(200).json(user);
     });
   }
   return res.status(400).json({ status: "error", message: "Error!" });
@@ -36,25 +37,33 @@ router.post("/", (req, res) => {
       message: `User ${body.id} created!`,
       user: body,
     });
+  } else {
+    body.forEach((user) => {
+      user.id = id;
+      users.push(user);
+      id++;
+    });
+    return res.status(201).json({
+      status: "success",
+      message: `${body.length} users created!`,
+      users: body,
+    });
   }
+
+  return res.status(400).json({ status: "error", message: "Error!" });
 });
 
-router.put("/", (req, res) => {
+router.put("/:id", (req, res) => {
   const body = req.body;
 
-  if (!body.id) {
-    return res.status(400).json({ status: "error", message: "Error!" });
-  }
-
   users.forEach((user) => {
-    if (user.id === body.id) {
-      console.log(user.id);
+    if (user.id === parseInt(req.params.id)) {
       for (const [key, value] of Object.entries(body)) {
         user[key] = value;
       }
       return res.status(201).json({
         status: "success",
-        message: `User ${body.id} updated!`,
+        message: `User ${req.params.id} updated!`,
         user,
       });
     }
@@ -63,17 +72,15 @@ router.put("/", (req, res) => {
   return res.status(400).json({ status: "error", message: "Error!" });
 });
 
-router.delete("/", (req, res) => {
-  const body = req.body;
-
-  if (body.id) {
-    console.log(body.id);
-    if (users !== users.filter((user) => user.id !== body.id)) {
-      users = users.filter((user) => user.id !== body.id);
+router.delete("/:id", (req, res) => {
+  if (req.params.id) {
+    if (users !== users.filter((user) => user.id !== parseInt(req.params.id))) {
+      const user = users.filter((user) => user.id === parseInt(req.params.id));
+      users = users.filter((user) => user.id !== parseInt(req.params.id));
       return res.status(201).json({
         status: "success",
-        message: `User ${body.id} deleted!`,
-        user: body,
+        message: `User ${req.params.id} deleted!`,
+        user,
       });
     }
   }
