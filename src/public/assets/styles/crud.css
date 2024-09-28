@@ -1,0 +1,140 @@
+#crud {
+  padding: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: start;
+  font-size: 16px;
+  .create {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .line {
+      position: relative;
+      display: grid;
+      gap: 8px;
+      input[type="text"],
+      input[type="number"],
+      input[type="email"],
+      input[type="submit"] {
+        font-family: Roboto;
+        padding: 12px 16px;
+        border: solid 1px #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        background-color: rgb(20, 140, 40);
+        border: none;
+        color: #fff;
+        font-weight: bolder;
+        cursor: pointer;
+      }
+      label {
+        display: block;
+        color: #666;
+        background-color: #fff;
+        padding: 4px;
+        font-weight: bolder;
+        position: absolute;
+        top: -12px;
+        left: 6px;
+        display: block;
+        font-size: 12px;
+      }
+    }
+  }
+  .data {
+    border: solid 1px #ccc;
+    border-collapse: collapse;
+    text-align: left;
+    height: fit-content;
+    th {
+      color: #666;
+      background-color: hsl(0, 0%, 96%);
+      font-size: 12px;
+    }
+    tr {
+      button {
+        opacity: 0.2;
+      }
+      &:hover {
+        button {
+          opacity: 1;
+        }
+      }
+    }
+    td,
+    th {
+      padding: 16px;
+      border: solid 1px #ccc;
+      border-left: none;
+      border-right: none;
+    }
+    td {
+      font-size: 14px;
+      background-color: hsl(0, 0%, 98%);
+      input[disabled] {
+        padding: 0;
+        color: #666;
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        cursor: text;
+      }
+      .save,
+      .cancel {
+        display: none;
+      }
+    }
+    .editing {
+      td {
+        padding: 0;
+        background-color: #fff;
+        border: solid 1px #ccc;
+        box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+        input {
+          padding: 16px;
+          color: #000;
+          background-color: transparent;
+          border: none;
+          width: 100%;
+          height: 100%;
+        }
+        &:last-child {
+          padding: 16px;
+        }
+      }
+      .edit,
+      .delete {
+        display: none;
+      }
+      .save,
+      .cancel {
+        display: inline-block;
+        opacity: 1;
+      }
+    }
+    button {
+      border: none;
+      color: #fff;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: bolder;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      &.edit {
+        background-color: rgb(200, 120, 0);
+      }
+      &.save {
+        background-color: rgb(20, 140, 40);
+      }
+      &.delete,
+      &.cancel {
+        background-color: rgb(200, 0, 0);
+      }
+    }
+  }
+}
