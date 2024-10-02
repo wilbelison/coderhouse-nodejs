@@ -53,26 +53,29 @@ function isArray(obj) {
   return !!obj && obj.constructor === Array;
 }
 
+// GET - Busca usuários
 router.get("/:id?", (req, res) => {
-  const id = req.params.id;
-  if (!req.params.id) {
-    res.status(200).json(users);
+  const userId = req.params.id;
+
+  if (!userId) {
+    return res.status(200).json(users);
   } else {
-    users.forEach((user) => {
-      if (user.id === parseInt(req.params.id))
-        return res.status(200).json(user);
-    });
+    const user = users.find((user) => user.id === parseInt(userId));
+    if (user) {
+      return res.status(200).json(user);
+    }
   }
-  return res.status(400).json({ status: "error", message: "Error!" });
+  return res.status(400).json({ status: "error", message: "User not found" });
 });
 
+// POST - Cria um novo usuário
 router.post("/", (req, res) => {
   const body = req.body;
 
   if (!isArray(body)) {
     body.id = id;
     if (!body.name || !body.last_name || !body.age || !body.email) {
-      return res.status(400).json({ status: "error", message: "Error!" });
+      return res.status(400).json({ status: "error", message: "Invalid data" });
     }
     users.push(body);
     id++;
@@ -93,43 +96,43 @@ router.post("/", (req, res) => {
       users: body,
     });
   }
-
-  return res.status(400).json({ status: "error", message: "Error!" });
 });
 
+// PUT - Atualiza um usuário
 router.put("/:id", (req, res) => {
+  const userId = req.params.id;
   const body = req.body;
 
-  users.forEach((user) => {
-    if (user.id === parseInt(req.params.id)) {
-      for (const [key, value] of Object.entries(body)) {
-        user[key] = value;
-      }
-      return res.status(201).json({
-        status: "success",
-        message: `User ${req.params.id} updated!`,
-        user,
-      });
-    }
-  });
+  const user = users.find((user) => user.id === parseInt(userId));
 
-  return res.status(400).json({ status: "error", message: "Error!" });
-});
-
-router.delete("/:id", (req, res) => {
-  if (req.params.id) {
-    if (users !== users.filter((user) => user.id !== parseInt(req.params.id))) {
-      const user = users.filter((user) => user.id === parseInt(req.params.id));
-      users = users.filter((user) => user.id !== parseInt(req.params.id));
-      return res.status(201).json({
-        status: "success",
-        message: `User ${req.params.id} deleted!`,
-        user,
-      });
-    }
+  if (user) {
+    Object.assign(user, body); // Atualiza o usuário com os novos dados
+    return res.status(200).json({
+      status: "success",
+      message: `User ${userId} updated!`,
+      user,
+    });
   }
 
-  return res.status(400).json({ status: "error", message: "Error!" });
+  return res.status(400).json({ status: "error", message: "User not found" });
+});
+
+// DELETE - Remove um usuário
+router.delete("/:id", (req, res) => {
+  const userId = req.params.id;
+
+  const userIndex = users.findIndex((user) => user.id === parseInt(userId));
+
+  if (userIndex !== -1) {
+    const removedUser = users.splice(userIndex, 1)[0];
+    return res.status(200).json({
+      status: "success",
+      message: `User ${userId} deleted!`,
+      user: removedUser,
+    });
+  }
+
+  return res.status(400).json({ status: "error", message: "User not found" });
 });
 
 export default router;

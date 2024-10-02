@@ -11,14 +11,6 @@ html {
   background-color: #fff;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 a,
 a:active,
 a:visited {
