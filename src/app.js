@@ -4,12 +4,12 @@ import { engine } from "express-handlebars";
 const app = express();
 const port = 8080;
 
-import usersRouter from "./routes/users.js";
+import apiUsersArrayRouter from "./routes/api_users_array.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/users", usersRouter);
+app.use("/api/users/array", apiUsersArrayRouter);
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
@@ -25,17 +25,17 @@ app.get("/", (req, res) => {
 
 app.get("/chat", (req, res) => {
   res.render("chat", {
-    title: "Chat",
+    title: "Chat (Websockets)",
     styles: ["/assets/styles/chat.css"],
     scripts: ["https://cdn.socket.io/4.7.5/socket.io.min.js", "/assets/scripts/chat.js"],
   });
 });
 
-app.get("/crud", (req, res) => {
-  res.render("crud", {
-    title: "CRUD",
-    styles: ["/assets/styles/crud.css"],
-    scripts: ["/assets/scripts/crud.js"],
+app.get("/users/array", (req, res) => {
+  res.render("users_array", {
+    title: "Users CRUD (Server Array)",
+    styles: ["/assets/styles/users.css"],
+    scripts: ["/assets/scripts/users.js"],
   });
 });
 
