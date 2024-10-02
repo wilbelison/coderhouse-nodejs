@@ -2,8 +2,52 @@ import { Router } from "express";
 
 const router = Router();
 
-let users = [];
-let id = 1;
+let users = [
+  {
+    id: 1,
+    name: "Lilian",
+    last_name: "de Aquino Menezes",
+    age: 27,
+    email: "lilian@email.com",
+  },
+  {
+    id: 2,
+    name: "Wilbelison",
+    last_name: "Santos Costa Junior",
+    age: 39,
+    email: "wil@email.com",
+  },
+  {
+    id: 3,
+    name: "Pandora",
+    last_name: "Lawrence",
+    age: 4,
+    email: "dorinha@email.com",
+  },
+  {
+    id: 4,
+    name: "Pantera",
+    last_name: "Menezes",
+    age: 18,
+    email: "tero@email.com",
+  },
+  {
+    id: 5,
+    name: "Mufasa",
+    last_name: "A",
+    age: 1,
+    email: "mufinha@email.com",
+  },
+  {
+    id: 6,
+    name: "Neverend",
+    last_name: "Hanna",
+    age: 6,
+    email: "end@email.com",
+  },
+];
+
+let id = 7;
 
 function isArray(obj) {
   return !!obj && obj.constructor === Array;

@@ -1,0 +1,83 @@
+<h1>Users CRUD (Server Array)</h1>
+
+<main id="users">
+
+  <form class="create">
+    <div class="line">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" required />
+    </div>
+    <div class="line">
+      <label for="last_name">Sobrenome:</label>
+      <input type="text" id="last_name" required />
+    </div>
+    <div class="line">
+      <label for="age">Idade:</label>
+      <input type="number" id="age" required />
+    </div>
+    <div class="line">
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" required />
+    </div>
+    <div class="line">
+      <input type="submit" id="add" value="Adicionar" />
+    </div>
+  </form>
+
+  <table class="data">
+
+    <thead>
+      <th width="5%">ID</th>
+      <th width="20%">Nome</th>
+      <th width="25%">Sobrenome</th>
+      <th width="10%">Idade</th>
+      <th width="20%">E-mail</th>
+      <th width="20%">Ações</th>
+    </thead>
+    <tbody id="users-tbody"></tbody>
+  </table>
+
+</main>
+
+<!-- Template Handlebars para a linha de tabela -->
+{{!-- <script id="users-template" type="text/x-handlebars-template">
+  {{#each users}}
+    <tr>
+      <td>{{this.id}}</td>
+      <td><input
+          type="text"
+          class="name"
+          required
+          disabled
+          value="{{this.name}}"
+        /></td>
+      <td><input
+          type="text"
+          class="last_name"
+          required
+          disabled
+          value="{{this.last_name}}"
+        /></td>
+      <td><input
+          type="number"
+          class="age"
+          required
+          disabled
+          value="{{this.age}}"
+        /></td>
+      <td><input
+          type="email"
+          class="email"
+          required
+          disabled
+          value="{{this.email}}"
+        /></td>
+      <td>
+        <button class="edit">Editar</button>
+        <button class="delete">Excluir</button>
+        <button class="save">Salvar</button>
+        <button class="cancel">Cancelar</button>
+      </td>
+    </tr>
+  {{/each}}
+</script> --}}
