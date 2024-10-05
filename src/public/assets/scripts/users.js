@@ -1,4 +1,32 @@
-const baseUrl = "/api/users/array";
+let baseUrl = "/api/users/array"; // Valor padrão
+
+// Função para atualizar a URL base quando o select mudar
+document.getElementById("api").addEventListener("change", function () {
+  const apiValue = this.value;
+  baseUrl = `/api/users/${apiValue}`;
+
+  // Atualiza o parâmetro na URL sem recarregar a página
+  const url = new URL(window.location);
+  url.searchParams.set("api", apiValue);
+  window.history.pushState({}, "", url);
+
+  renderUsersTable(); // Recarrega a tabela com a nova URL
+});
+
+// Função para obter o parâmetro "api" da URL e ajustar o select e baseUrl
+function loadApiFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const apiValue = urlParams.get("api");
+
+  if (apiValue) {
+    // Atualiza o valor do select com o valor da URL
+    document.getElementById("api").value = apiValue;
+    baseUrl = `/api/users/${apiValue}`;
+  } else {
+    // Define valor padrão se não houver parâmetro na URL
+    document.getElementById("api").value = "array";
+  }
+}
 
 // Função para fazer uma requisição genérica (GET, POST, PUT, DELETE)
 async function fetchAPI(endpoint = "", method = "GET", body = null) {
@@ -51,6 +79,7 @@ async function deleteUser(id) {
 
 // Função para renderizar a tabela usando Handlebars
 async function renderUsersTable() {
+  loadApiFromUrl();
   const users = await getUsers();
 
   if (!users || users.length === 0) {
@@ -75,8 +104,8 @@ async function renderUsersTable() {
       </tr>
     {{/each}}
   `;
-  const template = Handlebars.compile(templateSource);
 
+  const template = Handlebars.compile(templateSource);
   const html = template({ users });
   document.getElementById("users-tbody").innerHTML = html;
 
@@ -158,10 +187,12 @@ document.querySelector(".create").addEventListener("submit", async function(even
   const success = await createUser(newUser);
 
   if (success) {
-    renderUsersTable();
     event.target.reset();
+    renderUsersTable();
   }
 });
 
-// Renderiza a tabela quando a página for carregada
-window.onload = renderUsersTable;
+// Carrega o parâmetro "api" da URL ao carregar a página
+window.onload = function () {
+  renderUsersTable();
+};

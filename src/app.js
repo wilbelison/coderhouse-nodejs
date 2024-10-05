@@ -5,11 +5,17 @@ const app = express();
 const port = 8080;
 
 import apiUsersArrayRouter from "./routes/api_users_array.js";
+import apiUsersFileStytemRouter from "./routes/api_users_fs.js";
+import apiUsersMongooseRouter from "./routes/api_users_mongoose.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users/array", apiUsersArrayRouter);
+app.use("/api/users/fs", apiUsersFileStytemRouter);
+app.use("/api/users/mongoose", apiUsersMongooseRouter);
+
+
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
@@ -31,9 +37,9 @@ app.get("/chat", (req, res) => {
   });
 });
 
-app.get("/users/array", (req, res) => {
-  res.render("users_array", {
-    title: "Users CRUD (Server Array)",
+app.get("/users", (req, res) => {
+  res.render("users", {
+    title: "Users CRUD",
     styles: ["/assets/styles/users.css"],
     scripts: ["/assets/scripts/users.js"],
   });

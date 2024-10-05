@@ -17,7 +17,8 @@
       input[type="text"],
       input[type="number"],
       input[type="email"],
-      input[type="submit"] {
+      input[type="submit"],
+      select {
         font-family: Roboto;
         padding: 12px 16px;
         border: solid 1px #ccc;

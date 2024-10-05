@@ -1,8 +1,16 @@
-<h1>Users CRUD (Server Array)</h1>
+<h1>Users CRUD</h1>
 
 <main id="users">
 
   <form class="create">
+    <div class="line">
+      <label for="api">API:</label>
+      <select id="api" required />
+        <option value="array" selected>Server Array</option>
+        <option value="fs">File System (JSON)</option>
+        <option value="mongoose">Mongoose (MongoDB)</option>
+      </select>
+    </div>
     <div class="line">
       <label for="name">Nome:</label>
       <input type="text" id="name" required />
